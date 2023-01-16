@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+    app:
+        container_name: app
+        build:
+          context: .
+          dockerfile: ./build/Dockerfile
+        volumes:
+          - ./boiler-plate:/go/src/github.com/boiler-plate
+        tty: true
+        env_file:
+          - ./build/.go_env
+        environment:
+          - TZ=Asia/Tokyo
+        ports:
+          - "80:80"
+
